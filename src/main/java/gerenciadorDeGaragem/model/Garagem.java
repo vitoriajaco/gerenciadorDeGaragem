@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class GaragemModel {
+public class Garagem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
