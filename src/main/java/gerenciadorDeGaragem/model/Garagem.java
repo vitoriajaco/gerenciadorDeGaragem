@@ -1,9 +1,9 @@
 package gerenciadorDeGaragem.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Builder;
+
+import java.util.List;
 
 @Entity
 public class Garagem {
@@ -12,17 +12,15 @@ public class Garagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "proprietario_id")
     private Proprietario proprietario;
 
-    private Veiculo veiculo;
+    private List<Veiculo> veiculo;
 
     private int vaga;
 
-    private boolean ocupada;
-
-
-
-
+    private boolean ocupada = false;
 
 
 

@@ -17,7 +17,8 @@ public enum Marca {
     MOTTU,
     SHINERAY,
     BMW,
-    SUZUKI
+    SUZUKI,
+    SEM_MARCA
 
     
 }

@@ -4,5 +4,6 @@ public enum Automovel {
 
     CARRO,
     MOTO,
-    BARCO
+    BARCO,
+    EM_BRANCO
 }
