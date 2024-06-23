@@ -16,10 +16,10 @@ public class GaragemService {
     @Autowired
     private GaragemRepository garagemRepository;
 
-    public List<Garagem> mostrarTodasAsGaragens() {
+    public List<Garagem> mostrarTodasAsGaragens() throws ResourceNotFoundException {
         List<Garagem> garagens = garagemRepository.findAll();
         if (garagens.isEmpty()){
-            throw new ResourceNotFoundException("Ainda não há garagem cadastrada")
+            throw new ResourceNotFoundException("Ainda não há garagem cadastrada");
         }
         return garagens;
     }
@@ -33,5 +33,17 @@ public class GaragemService {
         if (!garagemRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Garagem com id " + id + " não encontrada");
         }
+    }
+
+    public Garagem cadastrarGaragem(Garagem garagem) {
+        return garagemRepository.save(garagem);
+    }
+
+    public Garagem alterarGaragem (Garagem garagem, Long id) throws GaragemSameIdException {
+        if (!(garagem.getId().equals(id))){
+            throw new GaragemSameIdException("Id de garagem não são iguais!");
+        }
+        validaSeGaragemExiste(id);
+        return garagemRepository.save(garagem);
     }
 }
