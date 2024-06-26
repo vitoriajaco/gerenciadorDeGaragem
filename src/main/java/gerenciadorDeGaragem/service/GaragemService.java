@@ -46,4 +46,9 @@ public class GaragemService {
         validaSeGaragemExiste(id);
         return garagemRepository.save(garagem);
     }
+
+    public void deletarGaragem(Long id){
+        validaSeGaragemExiste(id);
+        garagemRepository.deleteById(id);
+    }
 }
